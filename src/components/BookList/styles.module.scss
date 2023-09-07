@@ -1,0 +1,7 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 240px 240px 240px 240px;
+  grid-template-rows: auto;
+  justify-content: space-between;
+  gap: 40px 50px;
+}
