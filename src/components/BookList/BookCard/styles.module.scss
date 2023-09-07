@@ -1,5 +1,6 @@
 .wrapper {
   max-width: 240px;
+  height: 100%;
   padding: 15px;
   background-color: rgb(238, 238, 238);
 
@@ -9,8 +10,8 @@
     margin: 0 auto;
 
     img {
-      width: 100%;
-      height: 100%;
+      max-width: 150px;
+      height: 220px;
       object-fit: cover;
 
       box-shadow: 10px 10px 30px rgb(124, 124, 124);

@@ -1,17 +1,30 @@
 import { Link } from 'react-router-dom';
+
 import styles from './styles.module.scss';
 
-export const BookCard = () => {
+interface BookCardProps {
+  id: string;
+  title: string;
+  categories: Array<string> | undefined;
+  authors: Array<string>;
+  img: string | undefined;
+}
+
+export const BookCard = ({ id, title, categories, authors, img }: BookCardProps) => {
   return (
-    <Link to='book/1'>
+    <Link to={`book/${id}`}>
       <div className={styles.wrapper}>
         <div className={styles.image}>
-          <img src='/book.jpg' alt='book' />
+          <img
+            src={img ? img : '/book-mockup.png'}
+            alt={title}
+            style={!img ? { boxShadow: 'none' } : {}}
+          />
         </div>
         <div className={styles.info}>
-          <span className={styles.category}>Computers</span>
-          <h3>Node.js Разработка серверных веб-приложений на JavaScript</h3>
-          <span>Дэвид Хэрсон</span>
+          <span className={styles.category}>{categories && categories[0]}</span>
+          <h3>{title}</h3>
+          <span>{authors && authors.join(', ')}</span>
         </div>
       </div>
     </Link>
