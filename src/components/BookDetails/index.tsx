@@ -1,16 +1,38 @@
 import styles from './styles.module.scss';
 
-export const BookDetails = () => {
+interface BookDetailsProps {
+  title: string;
+  categories: Array<string> | undefined;
+  authors: Array<string>;
+  description: string | undefined;
+  img: string | undefined;
+}
+
+export const BookDetails = ({ title, categories, authors, description, img }: BookDetailsProps) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.image}>
-        <img src='/book.jpg' alt='book' />
+        <img
+          src={img ? img : '/book-mockup.png'}
+          alt={title}
+          style={!img ? { boxShadow: 'none' } : {}}
+        />
       </div>
       <div className={styles.info}>
-        <div className={styles.categories}>Art / General</div>
-        <h2>Node.js Разработка серверных веб-приложений на JavaScript</h2>
-        <span>Дэвид Хэрсон</span>
-        <div className={styles.descr}>An open score edition of Bach's Goldberg Variations</div>
+        {categories ? (
+          categories.map((category, i) => (
+            <div key={i} className={styles.categories}>
+              {category}
+            </div>
+          ))
+        ) : (
+          <div className={styles.categories}>There are no categories</div>
+        )}
+        <h2>{title}</h2>
+        {authors ? <span>{authors.join(', ')}</span> : <span>Author not found</span>}
+        <div className={styles.descr}>
+          {description ? description : 'There is no description of the book'}
+        </div>
       </div>
     </div>
   );

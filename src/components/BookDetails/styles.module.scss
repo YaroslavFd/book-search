@@ -12,8 +12,8 @@
     background-color: rgb(238, 238, 238);
 
     img {
-      width: 300px;
-      height: 400px;
+      width: 250px;
+      height: 350px;
       object-fit: cover;
 
       box-shadow: 10px 15px 30px rgb(124, 124, 124);
@@ -22,16 +22,15 @@
 
   .info {
     padding: 50px 15px;
-    max-width: 700px;
+    max-width: 750px;
 
     .categories {
-      margin-bottom: 40px;
+      margin-bottom: 10px;
       color: rgb(84, 84, 84);
     }
 
     h2 {
-      margin: 0;
-      margin-bottom: 15px;
+      margin: 40px 0 15px;
       font-size: 24px;
     }
 
@@ -46,6 +45,7 @@
     .descr {
       border: 1px solid rgb(218, 218, 218);
       padding: 15px;
+      width: 700px;
       min-height: 200px;
 
       font-size: 17px;

@@ -1,12 +1,10 @@
 import { useQuery } from 'react-query';
 
 import { BookList } from '@/components/BookList';
-import { fetchBooks } from '@/utils/api';
+import { BooksService } from '@/utils/api/BooksService';
 
 export const Home = () => {
-  const { isLoading, isError, data } = useQuery('getBooks', () => fetchBooks('js'));
-
-  console.log(data);
+  const { isLoading, isError, data } = useQuery('getBooks', () => BooksService.getBooks('js'));
 
   if (isLoading) {
     return <div>Loading...</div>;

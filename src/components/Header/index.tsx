@@ -11,6 +11,7 @@ export const Header = () => {
         <div className={styles.box}>
           <div className={styles.searchBox}>
             <input type='text' placeholder='Type to search...' />
+            <img src='/search.svg' alt='search icon' />
           </div>
           <div className={styles.selectBox}>
             <Select

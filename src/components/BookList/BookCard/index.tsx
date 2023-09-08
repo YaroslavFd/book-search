@@ -22,9 +22,9 @@ export const BookCard = ({ id, title, categories, authors, img }: BookCardProps)
           />
         </div>
         <div className={styles.info}>
-          <span className={styles.category}>{categories && categories[0]}</span>
+          {categories && <span className={styles.category}>{categories[0]}</span>}
           <h3>{title}</h3>
-          <span>{authors && authors.join(', ')}</span>
+          {authors && <span>{authors.join(', ')}</span>}
         </div>
       </div>
     </Link>
