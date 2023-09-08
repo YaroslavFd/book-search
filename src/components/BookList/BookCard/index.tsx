@@ -15,11 +15,7 @@ export const BookCard = ({ id, title, categories, authors, img }: BookCardProps)
     <Link to={`book/${id}`}>
       <div className={styles.wrapper}>
         <div className={styles.image}>
-          <img
-            src={img ? img : '/book-mockup.png'}
-            alt={title}
-            style={!img ? { boxShadow: 'none' } : {}}
-          />
+          <img src={img ? img : '/book-mockup.jpg'} alt={title} />
         </div>
         <div className={styles.info}>
           {categories && <span className={styles.category}>{categories[0]}</span>}

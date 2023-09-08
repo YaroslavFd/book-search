@@ -108,3 +108,11 @@ interface ReadingModes {
   text: boolean;
   image: boolean;
 }
+
+interface SearchOptions {
+  category: CategoryType;
+  orderBy: OrderByType;
+}
+
+type CategoryType = 'all' | 'art' | 'biography' | 'computers' | 'history' | 'medical' | 'poetry';
+type OrderByType = 'relevance' | 'newest';

@@ -5,7 +5,7 @@ interface SelectProps {
   name: string;
   defaultValue: string;
   options: Array<string>;
-  onChange: () => void;
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 export const Select = ({ label, name, defaultValue, options, onChange }: SelectProps) => {

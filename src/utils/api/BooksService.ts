@@ -1,10 +1,23 @@
 import { instance } from './instance';
 
 export const BooksService = {
-  getBooks: async (search: string): Promise<ResponseFetchBooks> => {
+  getBooks: async (
+    search: string,
+    categories: CategoryType,
+    orderBy: OrderByType,
+    quantity: number
+  ): Promise<ResponseFetchBooks> => {
     try {
+      const params = {
+        orderBy,
+        maxResults: quantity
+      };
+
       const response = await instance.get(
-        `/volumes?q=${search}&key=AIzaSyCnBa70VLlYIhBDTfqmoP0jFlT_jUKS_ts`
+        `/volumes?q=${search}${
+          categories !== 'all' ? `+subject:${categories}` : ''
+        }&key=AIzaSyCnBa70VLlYIhBDTfqmoP0jFlT_jUKS_ts`,
+        { params }
       );
 
       return response.data;

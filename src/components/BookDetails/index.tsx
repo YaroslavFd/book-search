@@ -12,11 +12,7 @@ export const BookDetails = ({ title, categories, authors, description, img }: Bo
   return (
     <div className={styles.wrapper}>
       <div className={styles.image}>
-        <img
-          src={img ? img : '/book-mockup.png'}
-          alt={title}
-          style={!img ? { boxShadow: 'none' } : {}}
-        />
+        <img src={img ? img : '/book-mockup.jpg'} alt={title} />
       </div>
       <div className={styles.info}>
         {categories ? (
