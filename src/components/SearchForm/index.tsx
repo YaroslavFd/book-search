@@ -2,7 +2,7 @@ import React from 'react';
 
 import searchParams from '@/store/searchParams';
 import { CATEGORIES_OPTIONS, SORTING_OPTIONS } from '@/utils/constants';
-import { Select } from '../UI/Select';
+import { Select } from '@/components/UI/Select';
 
 import styles from './styles.module.scss';
 

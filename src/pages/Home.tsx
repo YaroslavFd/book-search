@@ -1,8 +1,7 @@
-import { useQuery } from 'react-query';
 import { observer } from 'mobx-react-lite';
 
 import searchParams from '@/store/searchParams';
-import { BooksService } from '@/utils/api/BooksService';
+import { useFetchBooks } from '@/utils/hooks/useFetchBooks';
 import { BookList } from '@/components/BookList';
 import { Button } from '@/components/UI/Button';
 import { Spinner } from '@/components/UI/Spinner';
@@ -10,22 +9,10 @@ import { Spinner } from '@/components/UI/Spinner';
 export const Home = observer(() => {
   const { searchValue, searchOptions } = searchParams;
 
-  const { isLoading, isError, data } = useQuery(
-    ['getBooks', searchValue, searchOptions],
-    () => {
-      if (!searchValue) {
-        return {} as ResponseFetchBooks;
-      }
-
-      return BooksService.getBooks(searchValue, searchOptions.category, searchOptions.orderBy);
-    },
-    {
-      enabled: !!searchValue
-    }
-  );
+  const { isLoading, isError, data } = useFetchBooks(searchValue, searchOptions);
 
   const pageStatusMessage = !searchValue ? (
-    'Use the search'
+    'Use the search!'
   ) : isLoading ? (
     <Spinner />
   ) : isError ? (

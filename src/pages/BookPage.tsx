@@ -1,14 +1,13 @@
 import { useParams } from 'react-router-dom';
-import { useQuery } from 'react-query';
 
-import { BooksService } from '@/utils/api/BooksService';
+import { useFetchBook } from '@/utils/hooks/useFetchBook';
 import { BookDetails } from '@/components/BookDetails';
 import { Spinner } from '@/components/UI/Spinner';
 
 export const BookPage = () => {
   const { id } = useParams();
 
-  const { isLoading, isError, data } = useQuery('getBook', () => BooksService.getBook(String(id)));
+  const { isLoading, isError, data } = useFetchBook(String(id));
 
   if (isLoading) {
     return (

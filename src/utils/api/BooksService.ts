@@ -1,5 +1,7 @@
 import { instance } from './instance';
 
+const API_KEY = 'AIzaSyBeMW7rzQGK_AeFQ2nFYPVyWv710DbkzUU';
+
 export const BooksService = {
   getBooks: async (
     search: string,
@@ -15,7 +17,7 @@ export const BooksService = {
       const response = await instance.get(
         `/volumes?q=${search}${
           categories !== 'all' ? `+subject:${categories}` : ''
-        }&key=AIzaSyBeMW7rzQGK_AeFQ2nFYPVyWv710DbkzUU`,
+        }&key=${API_KEY}`,
         { params }
       );
 
@@ -28,9 +30,7 @@ export const BooksService = {
 
   getBook: async (id: string): Promise<Book> => {
     try {
-      const response = await instance.get(
-        `/volumes/${id}?key=AIzaSyBeMW7rzQGK_AeFQ2nFYPVyWv710DbkzUU`
-      );
+      const response = await instance.get(`/volumes/${id}?key=${API_KEY}`);
 
       return response.data;
     } catch (error) {
