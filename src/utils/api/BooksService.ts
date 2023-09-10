@@ -4,19 +4,18 @@ export const BooksService = {
   getBooks: async (
     search: string,
     categories: CategoryType,
-    orderBy: OrderByType,
-    quantity: number
+    orderBy: OrderByType
   ): Promise<ResponseFetchBooks> => {
     try {
       const params = {
         orderBy,
-        maxResults: quantity
+        maxResults: 30
       };
 
       const response = await instance.get(
         `/volumes?q=${search}${
           categories !== 'all' ? `+subject:${categories}` : ''
-        }&key=AIzaSyCnBa70VLlYIhBDTfqmoP0jFlT_jUKS_ts`,
+        }&key=AIzaSyBeMW7rzQGK_AeFQ2nFYPVyWv710DbkzUU`,
         { params }
       );
 
@@ -30,7 +29,7 @@ export const BooksService = {
   getBook: async (id: string): Promise<Book> => {
     try {
       const response = await instance.get(
-        `/volumes/${id}?key=AIzaSyCnBa70VLlYIhBDTfqmoP0jFlT_jUKS_ts`
+        `/volumes/${id}?key=AIzaSyBeMW7rzQGK_AeFQ2nFYPVyWv710DbkzUU`
       );
 
       return response.data;

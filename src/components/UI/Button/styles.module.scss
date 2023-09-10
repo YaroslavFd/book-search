@@ -1,0 +1,25 @@
+.button {
+  cursor: pointer;
+  padding: 20px 35px;
+  border: 1px solid grey;
+  background-color: transparent;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: rgb(238, 238, 238);
+  }
+
+  &:active {
+    background-color: rgb(196, 196, 196);
+  }
+
+  &.disabled {
+    cursor: default;
+    background-color: rgb(238, 238, 238);
+    opacity: 0.8;
+  }
+}

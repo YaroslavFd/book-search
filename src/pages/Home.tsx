@@ -1,9 +1,11 @@
 import { useQuery } from 'react-query';
+import { observer } from 'mobx-react-lite';
 
 import searchParams from '@/store/searchParams';
-import { BookList } from '@/components/BookList';
 import { BooksService } from '@/utils/api/BooksService';
-import { observer } from 'mobx-react-lite';
+import { BookList } from '@/components/BookList';
+import { Button } from '@/components/UI/Button';
+import { Spinner } from '@/components/UI/Spinner';
 
 export const Home = observer(() => {
   const { searchValue, searchOptions } = searchParams;
@@ -15,29 +17,31 @@ export const Home = observer(() => {
         return {} as ResponseFetchBooks;
       }
 
-      return BooksService.getBooks(searchValue, searchOptions.category, searchOptions.orderBy, 10);
+      return BooksService.getBooks(searchValue, searchOptions.category, searchOptions.orderBy);
     },
     {
       enabled: !!searchValue
     }
   );
 
-  if (!searchValue) {
-    return <div className='empty-list'>Use the search</div>;
-  }
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (isError) {
-    return <div>Error</div>;
-  }
+  const pageStatusMessage = !searchValue ? (
+    'Use the search'
+  ) : isLoading ? (
+    <Spinner />
+  ) : isError ? (
+    'Oops! Something went wrong :/'
+  ) : null;
 
   return (
     <div className='container'>
-      <span className='quantity'>Found {data?.totalItems} results</span>
-      {data && <BookList books={data?.items} />}
+      {pageStatusMessage && <div className='page-status'>{pageStatusMessage}</div>}
+      {data && (
+        <div>
+          <span className='quantity'>Found {data.totalItems} results</span>
+          <BookList books={data.items} />
+          {data.items.length < data.totalItems && <Button className='load-more'>Load more</Button>}
+        </div>
+      )}
     </div>
   );
 });

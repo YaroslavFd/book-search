@@ -12,7 +12,7 @@ interface BookCardProps {
 
 export const BookCard = ({ id, title, categories, authors, img }: BookCardProps) => {
   return (
-    <Link to={`book/${id}`}>
+    <Link to={`/book/${id}`}>
       <div className={styles.wrapper}>
         <div className={styles.image}>
           <img src={img ? img : '/book-mockup.jpg'} alt={title} />

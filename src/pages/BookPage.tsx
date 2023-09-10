@@ -1,8 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
-import { BookDetails } from '@/components/BookDetails';
 import { BooksService } from '@/utils/api/BooksService';
+import { BookDetails } from '@/components/BookDetails';
+import { Spinner } from '@/components/UI/Spinner';
 
 export const BookPage = () => {
   const { id } = useParams();
@@ -10,11 +11,15 @@ export const BookPage = () => {
   const { isLoading, isError, data } = useQuery('getBook', () => BooksService.getBook(String(id)));
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className='page-status'>
+        <Spinner />
+      </div>
+    );
   }
 
   if (isError || !data) {
-    return <div>Error</div>;
+    return <div className='page-status'>Oops! Something went wrong :/</div>;
   }
 
   return (

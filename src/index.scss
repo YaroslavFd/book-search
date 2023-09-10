@@ -27,7 +27,7 @@ body {
   font-weight: 500;
 }
 
-.empty-list {
+.page-status {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,4 +36,10 @@ body {
   font-size: 40px;
   font-weight: 700;
   color: grey;
+}
+
+.load-more {
+  display: flex;
+  margin: 0 auto;
+  margin-bottom: 40px;
 }
