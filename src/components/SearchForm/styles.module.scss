@@ -8,6 +8,10 @@
     align-items: center;
     padding: 0 40px;
 
+    @media (max-width: 567px) {
+      padding: 0;
+    }
+
     input {
       width: 100%;
       padding: 8px 40px 8px 8px;
@@ -33,5 +37,23 @@
   .selectBox {
     display: flex;
     gap: 15px;
+
+    select {
+      width: 170px;
+
+      @media (max-width: 767px) {
+        width: 90%;
+      }
+    }
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+      width: 400px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 567px) {
+      width: 100%;
+    }
   }
 }

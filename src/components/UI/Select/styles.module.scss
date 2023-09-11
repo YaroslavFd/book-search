@@ -9,8 +9,13 @@
   }
 
   select {
-    width: 170px;
+    width: 100%;
     padding: 5px;
     color: rgb(97, 97, 97);
+  }
+
+  @media (max-width: 767px) {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }

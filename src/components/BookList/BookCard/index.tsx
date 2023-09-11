@@ -12,17 +12,19 @@ interface BookCardProps {
 
 export const BookCard = ({ id, title, categories, authors, img }: BookCardProps) => {
   return (
-    <Link to={`/book/${id}`}>
-      <div className={styles.wrapper}>
+    <div className={styles.wrapper}>
+      <Link to={`/book/${id}`}>
         <div className={styles.image}>
           <img src={img ? img : '/book-mockup.jpg'} alt={title} />
         </div>
-        <div className={styles.info}>
-          {categories && <span className={styles.category}>{categories[0]}</span>}
+      </Link>
+      <div className={styles.info}>
+        {categories && <span className={styles.category}>{categories[0]}</span>}
+        <Link to={`/book/${id}`}>
           <h3>{title}</h3>
-          {authors && <span>{authors.join(', ')}</span>}
-        </div>
+        </Link>
+        {authors && <span>{authors.join(', ')}</span>}
       </div>
-    </Link>
+    </div>
   );
 };

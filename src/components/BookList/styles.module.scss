@@ -6,4 +6,22 @@
   gap: 40px 50px;
 
   padding-bottom: 50px;
+
+  @media (max-width: 1200px) {
+    justify-content: center;
+    grid-template-columns: 250px 250px 250px;
+  }
+
+  @media (max-width: 900px) {
+    gap: 40px;
+    grid-template-columns: 250px 250px;
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 300px;
+  }
+
+  @media (max-width: 375px) {
+    grid-template-columns: 260px;
+  }
 }

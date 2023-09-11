@@ -17,12 +17,14 @@ export const Home = observer(() => {
     <Spinner />
   ) : isError ? (
     'Oops! Something went wrong :/'
+  ) : !data?.totalItems ? (
+    'Nothing found'
   ) : null;
 
   return (
     <div className='container'>
       {pageStatusMessage && <div className='page-status'>{pageStatusMessage}</div>}
-      {data && (
+      {data && !!data.totalItems && (
         <div>
           <span className='quantity'>Found {data.totalItems} results</span>
           <BookList books={data.items} />
