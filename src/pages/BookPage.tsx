@@ -27,6 +27,7 @@ export const BookPage = () => {
       categories={data?.volumeInfo.categories}
       authors={data?.volumeInfo.authors}
       description={data?.volumeInfo.description}
+      link={data.volumeInfo.previewLink}
       img={data?.volumeInfo.imageLinks?.thumbnail}
     />
   );

@@ -2,7 +2,7 @@ import { BookDetailsProps } from '..';
 
 import styles from './styles.module.scss';
 
-export const Info = ({ categories, authors, description, title }: BookDetailsProps) => {
+export const Info = ({ categories, authors, description, link, title }: BookDetailsProps) => {
   const descrContent = description ? (
     <div dangerouslySetInnerHTML={{ __html: description }} className={styles.descr} />
   ) : (
@@ -19,6 +19,10 @@ export const Info = ({ categories, authors, description, title }: BookDetailsPro
       <h2>{title}</h2>
       {authors ? <span>{authors.join(', ')}</span> : <span>Author not found</span>}
       {descrContent}
+
+      <a className={styles.btnLink} href={link} target='_blank'>
+        Open in Google Books
+      </a>
     </div>
   );
 };

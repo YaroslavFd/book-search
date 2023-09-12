@@ -1,10 +1,11 @@
 .wrapper {
   padding: 50px 15px;
   max-width: 750px;
+  width: 100%;
 
   @media (max-width: 900px) {
-    padding: 0 15px 50px;
     max-width: 100%;
+    padding: 0 15px 50px;
   }
 
   .categories {
@@ -31,13 +32,25 @@
   .descr {
     border: 1px solid rgb(218, 218, 218);
     padding: 15px;
-    width: 700px;
+    width: 100%;
     min-height: 200px;
-
     font-size: 17px;
+  }
 
-    @media (max-width: 1300px) {
-      width: 100%;
+  .btnLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-left: auto;
+    max-width: 200px;
+    padding: 20px 10px;
+    border: 1px solid #000;
+
+    transition: scale 0.2s ease;
+
+    &:hover {
+      scale: 1.05;
     }
   }
 }

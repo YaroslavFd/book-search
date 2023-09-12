@@ -9,10 +9,18 @@ export interface BookDetailsProps {
   categories: Array<string> | undefined;
   authors: Array<string>;
   description: string | undefined;
+  link: string;
   img?: string | undefined;
 }
 
-export const BookDetails = ({ title, categories, authors, description, img }: BookDetailsProps) => {
+export const BookDetails = ({
+  title,
+  categories,
+  authors,
+  description,
+  link,
+  img
+}: BookDetailsProps) => {
   return (
     <>
       <Link className={styles.btnBack} to='/books'>
@@ -22,7 +30,13 @@ export const BookDetails = ({ title, categories, authors, description, img }: Bo
         <div className={styles.image}>
           <img src={img ? img : '/book-mockup.jpg'} alt={title} />
         </div>
-        <Info categories={categories} authors={authors} description={description} title={title} />
+        <Info
+          categories={categories}
+          authors={authors}
+          description={description}
+          title={title}
+          link={link}
+        />
       </div>
     </>
   );
