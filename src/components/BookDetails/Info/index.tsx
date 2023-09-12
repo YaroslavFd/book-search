@@ -3,6 +3,12 @@ import { BookDetailsProps } from '..';
 import styles from './styles.module.scss';
 
 export const Info = ({ categories, authors, description, title }: BookDetailsProps) => {
+  const descrContent = description ? (
+    <div dangerouslySetInnerHTML={{ __html: description }} className={styles.descr} />
+  ) : (
+    <div className={styles.descr}>There is no description of the book</div>
+  );
+
   return (
     <div className={styles.wrapper}>
       {categories ? (
@@ -12,9 +18,7 @@ export const Info = ({ categories, authors, description, title }: BookDetailsPro
       )}
       <h2>{title}</h2>
       {authors ? <span>{authors.join(', ')}</span> : <span>Author not found</span>}
-      <div className={styles.descr}>
-        {description ? description : 'There is no description of the book'}
-      </div>
+      {descrContent}
     </div>
   );
 };

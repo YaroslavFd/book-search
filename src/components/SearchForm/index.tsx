@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import searchParams from '@/store/searchParams';
 import { CATEGORIES_OPTIONS, SORTING_OPTIONS } from '@/utils/constants';
@@ -7,6 +8,8 @@ import { Select } from '@/components/UI/Select';
 import styles from './styles.module.scss';
 
 export const SearchForm = () => {
+  const navigate = useNavigate();
+
   const [value, setValue] = React.useState('');
   const [category, setCategory] = React.useState<CategoryType>('all');
   const [orderBy, setOrderBy] = React.useState<OrderByType>('relevance');
@@ -21,6 +24,10 @@ export const SearchForm = () => {
     if (value.trim() !== '') {
       searchParams.setSearchValue(value);
       searchParams.setSearchOptions(category, orderBy);
+    }
+
+    if (window.location.pathname !== '/books') {
+      navigate('/books');
     }
   };
 
